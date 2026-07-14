@@ -224,7 +224,7 @@ Demostración funcional, técnica y de flujo del Producto Mínimo Viable:
 
 1. 🏁 [Informe Final de Cierre del Proyecto](./docs/05_cierre/1_Informe_Final.md)
 2. 🧠 [Informe Final de Lecciones Aprendidas del Equipo](./docs/05_cierre/2_Lecciones_Aprendidas.md)
-3. 🎓 [Documentación de Capacitación y Manuales por Perfil](./docs/05_cierre/91_Capacitacion.md)
+3. 🎓 [Documentación de Capacitación y Manuales por Perfil](./docs/05_cierre/4_Manual_Capacitacion_Operaciones.md)
 </details>
 
 ---
@@ -233,6 +233,7 @@ Demostración funcional, técnica y de flujo del Producto Mínimo Viable:
 
 Acceso directo a los componentes clave que consolidan el cierre de gestión y transferencia técnica del sistema:
 
+0. 🏆 [Portafolio Consolidado de Cierre (Word Ready)](./docs/05_cierre/Portafolio_Final_Consolidado.md)
 1. 📑 [Informe Final del Proyecto](./docs/05_cierre/1_Informe_Final.md)
 2. 🧠 [Informe Final de Lecciones Aprendidas](./docs/05_cierre/2_Lecciones_Aprendidas.md)
 3. ⚠️ [Registro de Riesgos](./docs/04_seguimiento_control/3_Registros_Riesgos.md)
@@ -240,9 +241,9 @@ Acceso directo a los componentes clave que consolidan el cierre de gestión y tr
 5. 🚧 [Registro de Impedimentos](./docs/04_seguimiento_control/5_Impedimentos.md)
 6. 🐛 [Registro de Defectos](./docs/04_seguimiento_control/6_Registro_Defectos.md)
 7. 📋 [Registro de Supuestos y Restricciones](./docs/02_planificacion/4_supuestos_restricciones.md)
-8. 📜 [Acta de Constitución del Equipo](./docs/01_inicio/8_Constitucion.md)
-9. 📢 [Declaración de Trabajo](./docs/01_inicio/9_Declaracion.md)
-10. 🎓 [Documentación de Capacitación](./docs/05_cierre/91_Capacitacion.md)
+8. 📜 [Acta de Constitución del Proyecto (Project Charter)](./docs/01_inicio/3_project_charter.md)
+9. 📢 [Declaración de Trabajo (SOW)](./docs/01_inicio/9_Declaracion.md)
+10. 🎓 [Documentación de Capacitación y Operaciones](./docs/05_cierre/4_Manual_Capacitacion_Operaciones.md)
 
 ---
 
