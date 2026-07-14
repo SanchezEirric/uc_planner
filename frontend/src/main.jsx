@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
+  // TODO: Habilitar React.StrictMode para auditar componentes legacy
   <StrictMode>
     <App />
   </StrictMode>,
