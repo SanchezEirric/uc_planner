@@ -5,6 +5,7 @@ import cors from 'cors';
 import compression from 'compression';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+// TODO: Integrar algoritmo genético avanzado para optimización
 import { generarHorario } from './controllers/horarioController.js';
 import { generarHorariosGlobales, actualizarEstadoPago } from './controllers/adminController.js';
 import { 
