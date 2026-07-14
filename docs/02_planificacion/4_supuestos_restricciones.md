@@ -1,48 +1,27 @@
-# REGISTRO DE SUPUESTOS Y RESTRICCIONES
+# Registro de Supuestos (Assumption Log)
 
-**Proyecto:** Sistema de Generación Óptima de Horarios Académicos
-
-**Equipo:** Miguel Angel Castillo Rojas / Alain Aliaga Eulogio / Erick Sanchez Vicente / Tony Ulloa Alvinagorta
-
-
-**Fecha:** 30 de marzo de 2026
+**Proyecto:** Sistema de Generación Óptima de Horarios Académicos (Planner-UC)  
+**Fase de Gestión:** Control y Cierre del Proyecto  
+**Elaborado por:** Erick Sanchez Vicente  
+**Fecha de Actualización:** 14 de julio de 2026 (Versión Definitiva de Cierre)  
 
 ---
 
-## 1. Supuestos del Proyecto
-Los supuestos son factores que consideramos como ciertos para garantizar el avance del diseño y desarrollo:
-
-| ID | Categoría | Descripción del Supuesto |
-| :--- | :--- | :--- |
-| **S01** | Datos | La universidad proveerá la malla curricular completa y las reglas de prerrequisitos en formato digital. |
-| **S02** | Tecnología | Las capas gratuitas de MongoDB Atlas y Vercel/Render soportarán la carga de datos del PMV. |
-| **S03** | Usuario | Los coordinadores y alumnos tienen acceso a internet y conocimientos básicos de navegación web. |
-| **S04** | Equipo | Se mantendrá un flujo de trabajo constante en GitHub con al menos 5 commits por integrante. |
-| **S05** | Desarrollo | El motor de optimización (CSP) podrá ejecutarse en el entorno de Node.js sin requerir servidores de cómputo de alto rendimiento. |
+## 1. Propósito
+Los supuestos son afirmaciones que el equipo asumió como verdaderas durante la fase de inicio o planificación sin contar con evidencia empírica. Este registro detalla el análisis de impacto de dichos supuestos, su relación con las decisiones arquitectónicas clave del proyecto y su validación final (Verdadero/Falso) durante la ejecución. Es un documento vital para futuros equipos de la universidad que hereden el producto.
 
 ---
 
-## 2. Restricciones del Proyecto
-Las restricciones son limitaciones obligatorias que el equipo debe respetar estrictamente:
+## 2. Matriz Detallada de Supuestos e Impacto
 
-| ID | Categoría | Detalle de la Restricción |
-| :--- | :--- | :--- |
-| **R01** | Tiempo | La entrega final y sustentación debe realizarse en la **primera semana de julio de 2026**  |
-| **R02** | Negocio | El sistema debe validar obligatoriamente que el alumno se matricule entre **20 y 22 créditos**. |
-| **R03** | Algorítmica | Ningún horario generado puede tener solapamientos de docente, aula o estudiante |
-| **R04** | Seguridad | Implementación obligatoria de validaciones basadas en el estándar **OWASP Top 10**. |
-| **R05** | Calidad | El software debe alinearse a los criterios de mantenibilidad de la norma **ISO/IEC 25010**. |
-| **R06** | Sostenibilidad | Uso de principios de **Green Software** para optimizar el consumo de CPU en el backend de Node.js. |
-| **R07** | Accesibilidad | La interfaz en React debe cumplir con las pautas de accesibilidad **WCAG**. |
+| ID | Supuesto Inicial Asumido (Fase de Planificación) | Análisis de Impacto (Riesgo si resultaba ser Falso) | Relación con Decisiones Clave del Proyecto | Validación al Cierre (Resultado Final) |
+| :--- | :--- | :--- | :--- | :--- |
+| **SUP-01** | "El entorno de ejecución Node.js podrá manejar las permutaciones lógicas (CSP) de manera lineal en memoria sin colapsar." | **Alto Impacto.** Si era falso, el sistema consumiría toda la RAM y se caería al intentar cuadrar horarios complejos, inutilizando el PMV. | Forzó al equipo a realizar pruebas de estrés tempranas en el Sprint 2. Al fallar, se tomó la decisión crítica de abandonar la lógica iterativa lineal y **migrar a un Algoritmo Genético.** | **FALSO.** La suposición falló. Validó que para entornos académicos flexibles, los algoritmos heurísticos son obligatorios. |
+| **SUP-02** | "La disponibilidad horaria de los docentes y los aforos de laboratorio no cambiarán una vez iniciado el proceso de generación." | **Alto Impacto.** Si cambiaban en tiempo real, el motor generaría horarios viables que al segundo siguiente serían inválidos (cruce de aulas). | Condicionó el diseño del flujo de datos, imponiendo un "Bloqueo de Escritura" (Freeze) en las colecciones de MongoDB referidas a docentes y aulas durante el cálculo. | **VERDADERO.** La institución emitió una regla de negocio donde la disponibilidad de recursos queda bloqueada días previos a la matrícula. |
+| **SUP-03** | "Los recursos de la capa gratuita en la nube (Tier Free de MongoDB Atlas) soportarán el volumen de datos de prueba del PMV." | **Impacto Moderado.** Si era falso, el equipo tendría que asumir costos financieros no presupuestados para levantar bases de datos comerciales. | Determinó que el equipo implementara políticas extremas de **Green Software**, aplicando proyecciones restrictivas (`.select()`) para no malgastar bytes en transferencia. | **VERDADERO.** Gracias a las optimizaciones de código aplicadas, el consumo de red cayó un 94.7%, asegurando el uso del Tier Gratuito (Costo S/. 0.00). |
+| **SUP-04** | "Los alumnos priorizarán bloques de clases continuos (minimizar ventanas de tiempo libres) frente a la selección específica de un docente." | **Impacto Moderado.** Si era falso, el motor optimizaría variables que el usuario final no valora, generando insatisfacción en la UX. | Moduló los pesos de la función de *Fitness* en el backend, dándole un peso moderado (10 pts) a la regla blanda de "Minimizar huecos de tiempo". | **VERDADERO.** Encuestas informales de validación UX demostraron que los estudiantes de la universidad prefieren horarios compactos para optimizar traslados. |
 
 ---
 
-## 3. Matriz de Priorización de Restricciones
-En caso de conflictos durante el modelado del problema complejo, se seguirá este orden de prioridad:
-
-| Prioridad | Restricción | Impacto en el Proyecto |
-| :--- | :--- | :--- |
-| **1 (Alta)** | No Solapamiento e Integridad | Esencial para que el horario sea funcional y válido. |
-| **2 (Alta)** | Rango de Créditos (20-22) | Requisito administrativo crítico para la Universidad Continental. |
-| **3 (Media)** | Seguridad y Privacidad | Protección de datos sensibles en el stack MERN. |
-| **4 (Baja)** | Preferencias Horarias | Deseable, pero se puede sacrificar para cumplir con la validez del horario. |
+## 3. Conclusión y Aprendizaje para Futuros Proyectos
+El análisis de impacto de los supuestos demuestra que **la arquitectura técnica no fue diseñada al azar**. Decisiones críticas como la adopción del Algoritmo Genético, el endurecimiento transaccional y la optimización de código ecológico nacieron directamente de la necesidad de validar (o mitigar el fallo) de los supuestos iniciales. La principal lección es que en ingeniería de sistemas complejos (CSP), **todo supuesto técnico debe ser sometido a pruebas de estrés** en los primeros Sprints para evitar refactorizaciones tardías inmanejables.
