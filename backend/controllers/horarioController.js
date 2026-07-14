@@ -5,7 +5,10 @@ export const generarHorario = async (req, res) => {
   
   try {
     const { cursos } = req.body;
-    if (!cursos || cursos.length === 0) return res.status(400).json({ error: "No hay cursos" });
+    // FIX: Validación estricta de rutas y estructura del body
+    if (!cursos || !Array.isArray(cursos) || cursos.length === 0) {
+      return res.status(400).json({ error: "No hay cursos válidos en la petición" });
+    }
 
     const motor = new GeneticEngine();
     let mejorIndividuo = null;
