@@ -4,7 +4,7 @@ Este proyecto corresponde al **Proyecto de Fin de Asignatura (PFA)** del curso *
 
 ---
 
-<img width="1280" height="960" alt="Foto del equipo" src="https://github.com/user-attachments/assets/a8f92777-6524-49c3-b511-5d2d58ea3561" />
+<img width="1280" height="960" alt="Foto del equipo" src="https://github.com/user-attachments/assets/94fc0e00-15d7-471d-ab65-14516e557358" />
 
 ## 👥 Integrantes del Equipo
 - **Miguel Angel Castillo Rojas**
