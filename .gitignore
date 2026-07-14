@@ -1,0 +1,41 @@
+# Dependencias (para todas las carpetas)
+node_modules/
+
+# Variables de entorno
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Archivos de logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos de build y cobertura
+dist/
+build/
+coverage/
+.nyc_output/
+out/
+
+# Configuración de Editores / IDEs (VS Code, IntelliJ, etc)
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos autogenerados por el Sistema Operativo (Windows/Mac)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
